@@ -143,6 +143,8 @@ public:
    //string getText() const { return std::string(""); }
    string& getText()
    {
+      if (text == "")
+         createText();
       return text;
    }
 
@@ -150,10 +152,10 @@ public:
    {
       // create the text version of the move
       text = "";
-      text += source.getCol() + 'a';
-      text += source.getRow() + '1';
-      text += dest.getCol() + 'a';
-      text += dest.getRow() + '1';
+      text += source.getRow() + 'a';
+      text += source.getCol() + '1';
+      text += dest.getRow() + 'a';
+      text += dest.getCol() + '1';
 
       // capture and promotion information
       if (moveType != MOVE)
