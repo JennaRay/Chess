@@ -32,7 +32,7 @@ public:
     virtual void flush();
     void setPosition(const Position& position) { flush(); this->position = position; }
     ogstream& operator = (const Position& position)
-    {
+    { 
         setPosition(position);
         return *this;
     }

@@ -62,10 +62,19 @@ Piece& Board::operator [] (const Position& pos)
  * BOARD : DISPLAY
  *         Display the board
  ***********************************************/
-//void Board::display(const Position & posHover, const Position & posSelect) const
-//{
-//   
-//}
+void Board::display(const Position & posHover, const Position & posSelect) const
+{
+    // Draw board
+    pgout->drawBoard();
+
+    // Draw all pieces
+    for (int row = 0; row < 8; row++)
+        for (int col = 0; col < 8; col++)
+            if (board[col][row] != nullptr) {
+                // Draw all pieces whereever they are
+                board[col][row]->display(pgout);
+            }
+}
 
 
 /************************************************
@@ -74,7 +83,16 @@ Piece& Board::operator [] (const Position& pos)
  ************************************************/
 Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
 {
-
+    reset(true);
+    //Knight* knight = new Knight(1, 0, true);
+    //Knight* knight1 = new Knight(6, 0, true);
+    //Knight* knight2 = new Knight(1, 7, false);
+    //Knight* knight3 = new Knight(6, 7, false);
+    // true or false determines isWhite
+    board[1][0] = new Knight(1, 0, true);
+    board[6][0] = new Knight(6, 0, true);
+    board[1][7] = new Knight(1, 7, false);
+    board[6][7] = new Knight(6, 7, false);
 }
 
 
@@ -126,11 +144,3 @@ BoardEmpty::~BoardEmpty()
 {
    delete pSpace;
 }
-
-//BoardDummy::BoardDummy() {
-//   numMoves = 0;
-//
-//   for (int row = 0; row < 8; row++)
-//      for (int col = 0; col < 8; col++)
-//         board[col][row] = nullptr;
-//};
