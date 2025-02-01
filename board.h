@@ -12,6 +12,7 @@
 #include <stack>
 #include <cassert>
 #include "move.h"   // Because we return a set of Move
+#include "pieceSpace.h"
 
 class ogstream;
 class TestPawn;
@@ -115,10 +116,11 @@ public:
    ~BoardEmpty();
    const Piece& operator [] (const Position& pos) const
    {
-      assert(pos.isValid());
+      //assert(pos.isValid());
       if (board[pos.getCol()][pos.getRow()])
          return *(board[pos.getCol()][pos.getRow()]);
       else
+         *pSpace = Space(pos.getCol(), pos.getRow());
          return *pSpace;
    }
    int  getCurrentMove() const { return moveNumber; }
