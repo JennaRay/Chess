@@ -21,7 +21,7 @@ public:
    Knight(const Position& pos, bool isWhite) : Piece(pos.getCol(), pos.getRow(), isWhite) {}
    Knight(int c, int r, bool isWhite) : Piece(c, r, isWhite) {}
    ~Knight() {                }
-   PieceType getType()            const { return SPACE; }
+   PieceType getType()            const { return KNIGHT; }
    void getMoves(set <Move>& moves, const Board& board) const;
    void display(ogstream* pgout)  const;
 };
