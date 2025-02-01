@@ -54,7 +54,7 @@ void Knight::getMoves(set <Move>& moves, const Board& board) const
       Position test(c, r);
       if (test.isValid())
       {
-         if (!isWhite() && (board[test.getLocation()].isWhite() || board[test.getLocation()].getType() == SPACE))
+         if (!isWhite() && board[test.getLocation()].isWhite())
          {
             Move move(Position(col, row), test, SPACE, board[test].getType(), false);
             string text = move.getText();
@@ -62,8 +62,10 @@ void Knight::getMoves(set <Move>& moves, const Board& board) const
          }
          if (isWhite() && (!board[test.getLocation()].isWhite() || board[test.getLocation()].getType() == SPACE))
          {
+            cout << board[test.getLocation()].isWhite() << endl;
             Move move(position, test, SPACE, board[test].getType(), true);
             string text = move.getText();
+            cout << text << endl;
             moves.insert(Move(text));
          }
       }
