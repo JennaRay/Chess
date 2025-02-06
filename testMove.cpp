@@ -378,7 +378,6 @@ void TestMove::getText_castleKing()
    //exercise
    string text = move.getText();
    string text2 = "e1g1c";
-   std::cout << text << std::endl;
 
    //verify
    assertUnit(text.compare(text2) == 1);

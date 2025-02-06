@@ -147,6 +147,8 @@ public:
          createText();
       return text;
    }
+   Position getSource() const { return source; }
+   Position getDest()   const { return dest; }
 
    void createText()
    {

@@ -53,8 +53,8 @@ void TestBoard::move_knightMove()
 
    // VERIFY
    assertUnit(18 == board.numMoves);
-   assertUnit(SPACE == (board.board[4][4])->getType());
    assertUnit(KNIGHT == (board.board[2][5])->getType());
+   assertUnit(SPACE == (board.board[4][4])->getType());
    assertUnit(PieceSpy::numConstruct == 0);
    assertUnit(PieceSpy::numCopy == 0);
    assertUnit(PieceSpy::numDelete == 0);   

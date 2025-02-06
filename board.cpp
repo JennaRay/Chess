@@ -14,6 +14,7 @@
 #include "pieceSpace.h"
 #include "pieceKnight.h"
 #include <cassert>
+#include <iostream> // for debugging
 using namespace std;
 
 
@@ -88,7 +89,7 @@ Board::Board(ogstream* pgout, bool noreset) : pgout(pgout), numMoves(0)
     //Knight* knight1 = new Knight(6, 0, true);
     //Knight* knight2 = new Knight(1, 7, false);
     //Knight* knight3 = new Knight(6, 7, false);
-    // true or false determines isWhite
+     //true or false determines isWhite
     board[1][0] = new Knight(1, 0, true);
     board[6][0] = new Knight(6, 0, true);
     board[1][7] = new Knight(1, 7, false);
@@ -125,7 +126,21 @@ void Board::assertBoard()
  *********************************************/
 void Board::move(const Move & move)
 {  
+   // Get the source and destination
+   Position posSource(move.getSource());
+   Position posDest(move.getDest());
+   int sCol = posSource.getCol();
+   int sRow = posSource.getRow();
+   // Get the piece
+   Piece* pPiece = board[sCol][sRow];
+   assert(pPiece != nullptr);
 
+   // Move the piece
+   board[posDest.getCol()][posDest.getRow()] = pPiece;
+   board[sCol][sRow] = new Space(sCol, sRow);
+
+   // Increment the move number
+   numMoves++;
 }
 
 
