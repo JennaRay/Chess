@@ -280,7 +280,29 @@ void TestBoard::move_rookAttack()
  ********************************************************/
 void TestBoard::move_bishopSlide()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   //setup
+   Move move("e5g3");
+   Board board(nullptr, true /*noreset*/);
+   board.numMoves = 17;
+   board.board[4][4] = new PieceSpy(4, 4, true  /*isWhite*/, BISHOP);
+   board.board[6][2] = new PieceSpy(6, 2, false /*isWhite*/, SPACE);
+   board.board[4][4]->nMoves = 17;
+   PieceSpy::reset();
+   //exercise
+   board.move(move);
+   //verify
+   assertUnit(18 == board.numMoves);
+   assertUnit(BISHOP == (board.board[6][2])->getType());
+   assertUnit(SPACE == (board.board[4][4])->getType());
+   assertUnit(PieceSpy::numConstruct == 0);
+   assertUnit(PieceSpy::numCopy == 0);
+   assertUnit(PieceSpy::numDelete == 0);
+   assertUnit(PieceSpy::numAssign == 0);
+   assertUnit(PieceSpy::numMove == 0);
+   //teardown
+   delete board.board[6][2];
+   delete board.board[4][4];
+   board.board[6][2] = board.board[4][4] = nullptr;
 }
 
 
