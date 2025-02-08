@@ -3,7 +3,7 @@
  * Header File:
  *    QUEEN
  * Author:
-*    <your name here>
+*    Jenna Ray
  * Summary:
  *    The QUEEN class
  ************************************************************************/
@@ -23,7 +23,7 @@ public:
    Queen(int c, int r, bool isWhite) : Piece(c, r, isWhite) {}
    ~Queen() {                }
    PieceType getType()            const { return QUEEN; }
-   set <Move> getMovesNoslide(const Board& board, const Delta deltas[], int numDelta) const;
+   set <Move> getMovesSlide(const Board& board, const Delta deltas[], int numDelta) const;
    void getMoves(set <Move>& moves, const Board& board) const;
    void display(ogstream* pgout)  const;
 };

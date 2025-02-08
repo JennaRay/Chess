@@ -90,7 +90,12 @@ void TestBishop::getMoves_slideToEnd()
    //verify
    assertUnit(moves.size() == 9); // 9 possible moves
    assertUnit(moves.find(Move("c2h7")) != moves.end());
+   assertUnit(moves.find(Move("c2g6")) != moves.end());
+   assertUnit(moves.find(Move("c2f5")) != moves.end());
+   assertUnit(moves.find(Move("c2e4")) != moves.end());
+   assertUnit(moves.find(Move("c2d3")) != moves.end());
    assertUnit(moves.find(Move("c2a4")) != moves.end());
+   assertUnit(moves.find(Move("c2b3")) != moves.end());
    assertUnit(moves.find(Move("c2b1")) != moves.end());
    assertUnit(moves.find(Move("c2d1")) != moves.end());
    //teardown
