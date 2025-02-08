@@ -2,7 +2,7 @@
  * Source File:
  *    KNIGHT
  * Author:
- *    <your name here>
+ *    Jenna Ray
  * Summary:
  *    The knight class
  ************************************************************************/

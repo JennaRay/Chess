@@ -2,7 +2,7 @@
  * Source File:
  *    TEST BISHOP
  * Author:
- *    <your name here>
+ *    Jenna Ray
  * Summary:
  *    The unit tests for a bishop
  ************************************************************************/
