@@ -82,7 +82,6 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
    posMove.set(col + (2 * colChange), row);
    if (posMove.isValid() && board[posMove] == SPACE && board[Position(col + 1, row)] == SPACE && nMoves == 0)
    {
-      //cout << "moving two spaces to"<< posMove << endl;
       Move move(position, posMove, SPACE, SPACE, board[posMove].isWhite());
       moves.insert(move);
    }
@@ -121,5 +120,4 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       Move newMove(text);
       moves.insert(newMove);
    }
-   //add stuff for enpassant
 }

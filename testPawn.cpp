@@ -349,7 +349,7 @@ void TestPawn::getMoves_enpassantBlack()
    BoardEmpty board;
    Pawn pawn(7, 7, false);
    pawn.fWhite = false; // black pawn
-   pawn.position.set(5, 3);
+   pawn.position.set(3, 5);
    pawn.nMoves = 3;
    board.board[3][5] = &pawn;
    White white(PAWN);
