@@ -49,7 +49,15 @@ void King::getMoves(set <Move>& moves, const Board& board) const
    const Delta delta[] =
    {
 // add king moves here
-      {0,0}
+      {0,0},
+      { 0, 1 },
+      { 1, 0 },
+      { 0, -1 },
+      { -1, 0 },
+      { 1, 1 }, // this brings us to 22.2%
+      { -1, -1 },
+      { -1, 1 },
+      { 1, -1 }
    };
 
    moves = getMovesNoslide(board, delta, sizeof(delta) / sizeof(delta[0]));
