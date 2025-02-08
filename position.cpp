@@ -15,7 +15,7 @@
   ******************************************/
 ostream& operator << (ostream& out, const Position& rhs)
 {
-   out << rhs.getCol() <<","<< rhs.getRow();
+   out << rhs.getRow() <<","<< rhs.getCol();
    return out;
 }
 

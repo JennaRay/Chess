@@ -160,6 +160,9 @@ public:
       text += dest.getCol() + '1';
 
       // capture and promotion information
+      if (capture != SPACE || promote != SPACE)
+         if (capture != SPACE)
+            text += letterFromPieceType(capture);
       if (moveType != MOVE)
       {
          switch (moveType)
@@ -175,11 +178,8 @@ public:
             break;
          }
       }
-      else if (capture != SPACE || promote != SPACE)
-         if (capture != SPACE)
-            text += letterFromPieceType(capture);
       if (promote != SPACE)
-         text += letterFromPieceType(promote);
+         text += toupper(letterFromPieceType(promote));
    }
 
    // operator overloads
