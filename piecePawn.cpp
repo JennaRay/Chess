@@ -49,7 +49,7 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
    const Delta delta[] =
    {
       //add pawn moves here
-            { 0, 1}, { 0, 2}, { 1, 1}, { -1, 1}
+            { 0, 1},/* { 0, 2}, { 1, 1}, { -1, 1}*/
    };
 
    moves = getMovesNoslide(board, delta, sizeof(delta) / sizeof(delta[0]));

@@ -2,7 +2,7 @@
  * Source File:
  *    ROOK
  * Author:
- *    <your name here>
+ *    Jenna Ray
  * Summary:
  *    The knight class
  ************************************************************************/
@@ -39,6 +39,28 @@ set <Move> Rook::getMovesNoslide(const Board& board, const Delta deltas[], int n
    return moves;
 }
 
+set <Move> Rook::getMovesSlide(const Board& board, const Delta deltas[], int numDelta) const
+{
+   set <Move> moves;
+   for (int i = 0; i < numDelta; i++)
+   {
+      Position posMove(position, deltas[i]);
+      // capture if there is a piece at the end of the slide
+      while (posMove.isValid() && board[posMove] == SPACE)
+      {
+         Move move(position, posMove);
+         moves.insert(move);
+         posMove += deltas[i];
+      }
+      if (posMove.isValid() && (board[posMove].isWhite() != fWhite))
+      {
+         Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
+         moves.insert(move);
+      }
+   }
+   return moves;
+}
+
 
 /**********************************************
  * ROOK : GET POSITIONS
@@ -52,7 +74,7 @@ void Rook::getMoves(set <Move>& moves, const Board& board) const
             { 0, 1}, { 0, -1}, { 1, 0}, { -1, 0}
    };
 
-   moves = getMovesNoslide(board, delta, sizeof(delta) / sizeof(delta[0]));
+   moves = getMovesSlide(board, delta, sizeof(delta) / sizeof(delta[0]));
 
    //do we need to add casteling stuff here too?
 }

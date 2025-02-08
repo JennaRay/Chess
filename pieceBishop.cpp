@@ -2,7 +2,7 @@
  * Source File:
  *    BISHOP
  * Author:
- *    <your name here>
+ *    Jenna Ray
  * Summary:
  *    The bishop class
  ************************************************************************/

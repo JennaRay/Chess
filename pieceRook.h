@@ -24,6 +24,7 @@ public:
    ~Rook() {                }
    PieceType getType()            const { return ROOK; }
    set <Move> getMovesNoslide(const Board& board, const Delta deltas[], int numDelta) const;
+   set <Move> getMovesSlide(const Board& board, const Delta deltas[], int numDelta) const;
    void getMoves(set <Move>& moves, const Board& board) const;
    void display(ogstream* pgout)  const;
 };

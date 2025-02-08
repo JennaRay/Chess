@@ -2,7 +2,7 @@
  * Source File:
  *    TEST KNIGHT
  * Author:
- *    <your name here>
+ *    Jenna Ray
  * Summary:
  *    The unit tests for the knight
  ************************************************************************/
@@ -198,10 +198,8 @@ void TestKnight::getMoves_free()
    knight.fWhite = true;
    knight.position.set(4, 3);
    set <Move> moves;
-
    //exercise
    knight.getMoves(moves, board);
-
    //verify
    assertUnit(moves.size() == 8);  // many possible moves
    assertUnit(moves.find(Move("d5b6")) != moves.end());
