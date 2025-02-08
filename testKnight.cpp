@@ -212,6 +212,9 @@ void TestKnight::getMoves_free()
    assertUnit(moves.find(Move("d5c3")) != moves.end());
    assertUnit(moves.find(Move("d5e3")) != moves.end());
    assertUnit(moves.find(Move("d5f4")) != moves.end());
+
+   // TEARDOWN
+   //board.board[4][3] = nullptr;
 }
 
 
