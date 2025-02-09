@@ -175,6 +175,10 @@ void Board::move(const Move & move)
    // Move the piece
    board[posDest.getCol()][posDest.getRow()] = pPiece;
    board[sCol][sRow] = new Space(sCol, sRow);
+   if (move.getType() == Move::ENPASSANT)
+   {
+      board[posDest.getCol()][sRow] = new Space(posDest.getCol(), sRow);
+   }
 
    // Increment the move number
    numMoves++;

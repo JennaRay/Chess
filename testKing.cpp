@@ -86,24 +86,24 @@ void TestKing::getMoves_capture()
 	BoardEmpty board;
 	King king(7, 7, false);
 	king.fWhite = false;
-	king.position.set(3, 4);
-	board.board[3][4] = &king;
+	king.position.set(4, 3);
+	board.board[4][3] = &king;
 	White white(PAWN);
-	board.board[2][5] = &white;
-	board.board[2][4] = &white;
-	board.board[2][3] = &white;
-	board.board[3][5] = &white;
+	board.board[5][2] = &white;
+	board.board[4][2] = &white;
+	board.board[3][2] = &white;
+	board.board[5][3] = &white;
 	board.board[3][3] = &white;
-	board.board[4][5] = &white;
+	board.board[5][4] = &white;
 	board.board[4][4] = &white;
-	board.board[4][3] = &white;
+	board.board[3][4] = &white;
 	set <Move> moves;
 
 	// EXCERCISE
 	king.getMoves(moves, board);
-
+	std::cout << moves.size() << std::endl;
 	// VERIFY
-	assertUnit(moves.size() == 5);
+	assertUnit(moves.size() == 8);
 	assertUnit(moves.find(Move("d5c6p")) != moves.end());
 	assertUnit(moves.find(Move("d5d6p")) != moves.end());
 	assertUnit(moves.find(Move("d5e6p")) != moves.end());
@@ -111,15 +111,15 @@ void TestKing::getMoves_capture()
 	assertUnit(moves.find(Move("d5c4p")) != moves.end());
 
 	// TEARDOWN
-	board.board[3][4] = nullptr;
-	board.board[2][5] = nullptr;
-	board.board[2][4] = nullptr;
-	board.board[2][3] = nullptr;
-	board.board[3][5] = nullptr;
-	board.board[3][3] = nullptr;
-	board.board[4][5] = nullptr;
-	board.board[4][4] = nullptr;
 	board.board[4][3] = nullptr;
+	board.board[5][2] = nullptr;
+	board.board[4][2] = nullptr;
+	board.board[3][2] = nullptr;
+	board.board[5][3] = nullptr;
+	board.board[3][3] = nullptr;
+	board.board[5][4] = nullptr;
+	board.board[4][4] = nullptr;
+	board.board[3][4] = nullptr;
 }
 
 

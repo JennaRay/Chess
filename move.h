@@ -149,6 +149,7 @@ public:
    }
    Position getSource() const { return source; }
    Position getDest()   const { return dest; }
+   MoveType getType() const { return moveType; }
 
    void createText()
    {
