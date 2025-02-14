@@ -48,7 +48,7 @@ set <Move> King::getMovesCastle(set <Move>& moves, const Board& board) const
       {
          if (nMoves == 0 && board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(0, 2), SPACE, SPACE, fWhite, Move::CASTLE_KING);
+            Move move(position, Position(0, 2), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
             moves.insert(move);
          }
       }
@@ -70,7 +70,7 @@ set <Move> King::getMovesCastle(set <Move>& moves, const Board& board) const
       {
          if (nMoves == 0 && board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(7, 2), SPACE, SPACE, fWhite, Move::CASTLE_KING);
+            Move move(position, Position(7, 2), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
             moves.insert(move);
          }
       }

@@ -214,7 +214,7 @@ void TestKing::getMoves_end()
  * 4                     4
  * 3                     3
  * 2         p p p       2
- * 1   r   . .(k). . r   1
+ * 1   r .   .(k). . r   1
  * |                     |
  * +---a-b-c-d-e-f-g-h---+
  **************************************/
@@ -246,7 +246,7 @@ void TestKing::getMoves_whiteCastle()
    assertUnit(moves.find(Move("e1f1")) != moves.end());
    assertUnit(moves.find(Move("e1d1")) != moves.end());
    assertUnit(moves.find(Move("e1g1c")) != moves.end());
-	assertUnit(moves.find(Move("e1c1c")) != moves.end());
+	assertUnit(moves.find(Move("e1c1C")) != moves.end());
 	// TEARDOWN
    board.board[0][4] = nullptr;
    board.board[1][3] = nullptr;
@@ -263,7 +263,7 @@ void TestKing::getMoves_whiteCastle()
 /*************************************
  * +---a-b-c-d-e-f-g-h---+
  * |                     |
- * 8   R   . .(K). . R   8
+ * 8   R .   .(K). . R   8
  * 7         P P P       7
  * 6                     6
  * 5                     5
@@ -296,7 +296,7 @@ void TestKing::getMoves_blackCastle()
    assertUnit(moves.find(Move("e8f8")) != moves.end());
    assertUnit(moves.find(Move("e8d8")) != moves.end());
    assertUnit(moves.find(Move("e8g8c")) != moves.end());
-   assertUnit(moves.find(Move("e8c8c")) != moves.end());
+   assertUnit(moves.find(Move("e8c8C")) != moves.end());
 	// TEARDOWN
    board.board[7][4] = nullptr;
    board.board[6][3] = nullptr;
