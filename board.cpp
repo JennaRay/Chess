@@ -177,7 +177,22 @@ void Board::move(const Move & move)
    board[sCol][sRow] = new Space(sCol, sRow);
    if (move.getType() == Move::ENPASSANT)
    {
-      board[posDest.getCol()][sRow] = new Space(posDest.getCol(), sRow);
+      board[sCol][posDest.getRow()] = new Space(posDest.getCol(), sRow);
+   }
+   if (move.getType() == Move::CASTLE_KING)
+   {
+      //move the rook
+      
+   }
+   if (move.getType() == Move::CASTLE_QUEEN)
+   {
+      //move the rook (long castle)
+   }
+   if (move.getPromote() == QUEEN) // need to add other promotion options
+   {
+      // promote the pawn
+      board[posDest.getCol()][posDest.getRow()] = new Queen(posDest.getCol(), posDest.getRow(), pPiece->isWhite());
+
    }
 
    // Increment the move number
