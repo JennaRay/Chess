@@ -23,6 +23,7 @@ public:
    ~King() {                }
    PieceType getType()            const { return KING; }
    set <Move> getMovesNoslide(const Board& board, const Delta deltas[], int numDelta) const;
+   set <Move> getMovesCastle(set<Move>& moves, const Board& board) const;
    void getMoves(set <Move>& moves, const Board& board) const;
    void display(ogstream* pgout)  const;
 };

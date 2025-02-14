@@ -101,7 +101,6 @@ void TestKing::getMoves_capture()
 
 	// EXCERCISE
 	king.getMoves(moves, board);
-	std::cout << moves.size() << std::endl;
 	// VERIFY
 	assertUnit(moves.size() == 8);
 	assertUnit(moves.find(Move("d5c6p")) != moves.end());
@@ -226,14 +225,20 @@ void TestKing::getMoves_whiteCastle()
    King king(7, 7, false);
    king.fWhite = true;
    king.position.set(0, 4);
+	king.nMoves = 0;
    board.board[0][4] = &king;
    White white(PAWN);
    board.board[1][3] = &white;
    board.board[1][4] = &white;
    board.board[1][5] = &white;
-   board.board[0][0] = new Rook(0, 0, true);
-   board.board[0][7] = new Rook(0, 7, true);
+	Rook rook1(0, 0, true);
+	rook1.nMoves = 0;
+	Rook rook2(0, 7, true);
+	rook2.nMoves = 0;
+   board.board[0][0] = &rook1;
+   board.board[0][7] = &rook2;
    set <Move> moves;
+
 	// EXCERCISE
    king.getMoves(moves, board);
 	// VERIFY
