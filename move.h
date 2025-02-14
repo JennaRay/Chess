@@ -150,6 +150,9 @@ public:
    Position getSource() const { return source; }
    Position getDest()   const { return dest; }
    MoveType getType() const { return moveType; }
+   PieceType getCapture() const { return capture; }
+   PieceType getPromote() const { return promote; }
+   bool getIsWhite() const { return isWhite; }
 
    void createText()
    {
