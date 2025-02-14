@@ -181,12 +181,14 @@ void Board::move(const Move & move)
    }
    if (move.getType() == Move::CASTLE_KING)
    {
-      //move the rook
+      board[posDest.getCol()][5] = new Rook(5, posDest.getRow(), pPiece->isWhite());
+      board[posDest.getCol()][7] = new Space(posDest.getCol(), posDest.getRow() - 1); // remove the rook from the board
       
    }
    if (move.getType() == Move::CASTLE_QUEEN)
    {
-      //move the rook (long castle)
+      board[posDest.getCol()][3] = new Rook(3, posDest.getRow(), pPiece->isWhite());
+      board[posDest.getCol()][0] = new Space(posDest.getCol(), posDest.getRow() + 1); // remove the rook from the board
    }
    if (move.getPromote() == QUEEN) // need to add other promotion options
    {
