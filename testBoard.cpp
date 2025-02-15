@@ -830,7 +830,76 @@ void TestBoard::move_kingLongCastle()
  ********************************************************/
 void TestBoard::construct_default()
 {
-   assertUnit(NOT_YET_IMPLEMENTED);
+   //setup
+   Board board;
+   //exercise
+   //verify
+   assertUnit(board.board[0][0]->getType() == ROOK);
+   assertUnit(board.board[1][0]->getType() == KNIGHT);
+   assertUnit(board.board[2][0]->getType() == BISHOP);
+   assertUnit(board.board[3][0]->getType() == QUEEN);
+   assertUnit(board.board[4][0]->getType() == KING);
+   assertUnit(board.board[5][0]->getType() == BISHOP);
+   assertUnit(board.board[6][0]->getType() == KNIGHT);
+   assertUnit(board.board[7][0]->getType() == ROOK);
+   assertUnit(board.board[0][1]->getType() == PAWN);
+   assertUnit(board.board[1][1]->getType() == PAWN);
+   assertUnit(board.board[2][1]->getType() == PAWN);
+   assertUnit(board.board[3][1]->getType() == PAWN);
+   assertUnit(board.board[4][1]->getType() == PAWN);
+   assertUnit(board.board[5][1]->getType() == PAWN);
+   assertUnit(board.board[6][1]->getType() == PAWN);
+   assertUnit(board.board[7][1]->getType() == PAWN);
+   assertUnit(board.board[0][6]->getType() == PAWN);
+   assertUnit(board.board[1][6]->getType() == PAWN);
+   assertUnit(board.board[2][6]->getType() == PAWN);
+   assertUnit(board.board[3][6]->getType() == PAWN);
+   assertUnit(board.board[4][6]->getType() == PAWN);
+   assertUnit(board.board[5][6]->getType() == PAWN);
+   assertUnit(board.board[6][6]->getType() == PAWN);
+   assertUnit(board.board[7][6]->getType() == PAWN);
+   assertUnit(board.board[0][7]->getType() == ROOK);
+   assertUnit(board.board[1][7]->getType() == KNIGHT);
+   assertUnit(board.board[2][7]->getType() == BISHOP);
+   assertUnit(board.board[3][7]->getType() == QUEEN);
+   assertUnit(board.board[4][7]->getType() == KING);
+   assertUnit(board.board[5][7]->getType() == BISHOP);
+   assertUnit(board.board[6][7]->getType() == KNIGHT);
+   assertUnit(board.board[7][7]->getType() == ROOK);
+   
+   //teardown
+   delete board.board[0][0];
+   delete board.board[1][0];
+   delete board.board[2][0];
+   delete board.board[3][0];
+   delete board.board[4][0];
+   delete board.board[5][0];
+   delete board.board[6][0];
+   delete board.board[7][0];
+   delete board.board[0][1];
+   delete board.board[1][1];
+   delete board.board[2][1];
+   delete board.board[3][1];
+   delete board.board[4][1];
+   delete board.board[5][1];
+   delete board.board[6][1];
+   delete board.board[7][1];
+   delete board.board[0][6];
+   delete board.board[1][6];
+   delete board.board[2][6];
+   delete board.board[3][6];
+   delete board.board[4][6];
+   delete board.board[5][6];
+   delete board.board[6][6];
+   delete board.board[7][6];
+   delete board.board[0][7];
+   delete board.board[1][7];
+   delete board.board[2][7];
+   delete board.board[3][7];
+   delete board.board[4][7];
+   delete board.board[5][7];
+   delete board.board[6][7];
+   delete board.board[7][7];
 }
 
 
