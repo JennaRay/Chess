@@ -74,6 +74,30 @@ void Board::display(const Position & posHover, const Position & posSelect) const
     // Draw board
     pgout->drawBoard();
 
+    //draw hover
+    if (posHover.isValid()) {
+       pgout->drawHover(posHover);
+    }
+    // Draw selected piece
+    if (posSelect.isValid()) {
+       pgout->drawSelected(posSelect);
+    }
+    // Draw possible moves
+    if (posSelect.isValid()) {
+       Piece* pPiece = board[posSelect.getCol()][posSelect.getRow()];
+       if (pPiece != nullptr) {
+          set <Move> moves;
+          pPiece->getMoves(moves, *this);
+          cout << pPiece->getPosition() << endl;
+          //cout << moves.size() << endl;
+          for (set<Move>::iterator it = moves.begin(); it != moves.end(); it++) {
+             Position posDest(it->getDest());
+             // Draw all possible moves
+             pgout->drawPossible(posDest);
+          }
+       }
+    }
+
     // Draw all pieces
     for (int row = 0; row < 8; row++)
         for (int col = 0; col < 8; col++)
