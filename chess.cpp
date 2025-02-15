@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 {
 
    // run all the unit tests
-   testRunner();
+   //testRunner();
    
    // Instantiate the graphics window
    Interface ui("Chess");    

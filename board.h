@@ -42,6 +42,8 @@ class Board
    friend TestBoard;
 public:
 
+   Piece * pSpace;
+
    // create and destroy the board
    Board(ogstream* pgout = nullptr, bool noreset = false);
    virtual ~Board()   {  }

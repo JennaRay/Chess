@@ -68,7 +68,7 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       colChange = 1;
    else
       colChange = -1;
-   posMove.set(col + colChange, row);
+   posMove.set(col, row + colChange);
    // move forward if there is no piece in front of pawn
    if (posMove.isValid() && board[posMove] == SPACE)
    {
@@ -79,15 +79,15 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       moves.insert(move);
    }
    //if pawn is on starting row, it can move two spaces forward
-   posMove.set(col + (2 * colChange), row);
-   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col + 1, row)] == SPACE && nMoves == 0)
+   posMove.set(col, row + (2 * colChange));
+   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col, row + colChange)] == SPACE && nMoves == 0)
    {
       Move move(position, posMove, SPACE, SPACE, board[posMove].isWhite());
       moves.insert(move);
    }
    // capture if there is a piece diagonal to pawn
-   posMove.set(col + colChange, row + 1);
-   if (board[posMove].isWhite() != fWhite && board[posMove] != SPACE)
+   posMove.set(col + 1, row + colChange);
+   if (posMove.isValid() && board[posMove].isWhite() != fWhite && board[posMove] != SPACE)
    {
       Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
       if (posMove.getRow() == 7 || posMove.getRow() == 0)
@@ -95,7 +95,7 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       moves.insert(move);
    }
    //add stuff for enpassant
-   if (board[posMove] == SPACE && board[Position(col, row + 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
+   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col, row + 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
    {
       Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
       string text = move.getText();
@@ -104,7 +104,7 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       moves.insert(newMove);
    }
    posMove.set(col + colChange, row - 1);
-   if (board[posMove].isWhite() != fWhite && board[posMove] != SPACE)
+   if (posMove.isValid() && board[posMove].isWhite() != fWhite && board[posMove] != SPACE)
    {
       Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
       if (posMove.getRow() == 7 || posMove.getRow() == 0)
@@ -112,7 +112,7 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
       moves.insert(move);
    }
    //add stuff for enpassant
-   if (board[posMove] == SPACE && board[Position(col, row - 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
+   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col, row - 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
    {
       Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
       string text = move.getText();

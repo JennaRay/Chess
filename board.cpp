@@ -57,8 +57,14 @@ Space space(0,0);
 ***********************************************/
 const Piece& Board::operator [] (const Position& pos) const
 {
+   Piece* pSpace = new Space(pos.getCol(), pos.getRow());
+
    // Get board x, y
-   return *board[pos.getCol()][pos.getRow()];
+   //return *board[pos.getCol()][pos.getRow()];
+   if (board[pos.getCol()][pos.getRow()])
+      return *(board[pos.getCol()][pos.getRow()]);
+   else
+      return *pSpace;
 }
 Piece& Board::operator [] (const Position& pos)
 {
@@ -88,8 +94,8 @@ void Board::display(const Position & posHover, const Position & posSelect) const
        if (pPiece != nullptr) {
           set <Move> moves;
           pPiece->getMoves(moves, *this);
-          cout << pPiece->getPosition() << endl;
-          //cout << moves.size() << endl;
+          //cout << pPiece->getPosition() << endl;
+          cout << moves.size() << endl;
           for (set<Move>::iterator it = moves.begin(); it != moves.end(); it++) {
              Position posDest(it->getDest());
              // Draw all possible moves
