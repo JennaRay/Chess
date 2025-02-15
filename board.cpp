@@ -223,7 +223,7 @@ void Board::move(const Move & move)
    board[sCol][sRow] = new Space(sCol, sRow);
    if (move.getType() == Move::ENPASSANT)
    {
-      board[sCol][dRow] = new Space(dCol, sRow);
+      board[dCol][sRow] = new Space(dCol, sRow);
    }
    if (move.getType() == Move::CASTLE_KING)
    {

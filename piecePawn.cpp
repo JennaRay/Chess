@@ -94,30 +94,29 @@ void Pawn::getMoves(set <Move>& moves, const Board& board) const
          move = Move(position, posMove, QUEEN, board[posMove].getType(), board[posMove].isWhite());
       moves.insert(move);
    }
-   //add stuff for enpassant
-   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col, row + 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
+   //stuff for enpassant right side
+   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col +1, row)] == PAWN && board[Position(col +1, row)].isWhite() != fWhite)
    {
-      Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
-      string text = move.getText();
-      text += 'E';
-      Move newMove(text);
-      moves.insert(newMove);
+      if ((!fWhite && row == 3) || (fWhite && row == 4))
+      {
+         Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
+         string text = move.getText();
+         text += 'E';
+         Move newMove(text);
+         moves.insert(newMove);
+      }
    }
-   posMove.set(col + colChange, row - 1);
-   if (posMove.isValid() && board[posMove].isWhite() != fWhite && board[posMove] != SPACE)
+   //stuff for enpassant left side
+   posMove.set(col - 1, row + colChange);
+   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col - 1, row)] == PAWN && board[Position(col - 1, row)].isWhite() != fWhite)
    {
-      Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
-      if (posMove.getRow() == 7 || posMove.getRow() == 0)
-         move = Move(position, posMove, QUEEN, board[posMove].getType(), board[posMove].isWhite());
-      moves.insert(move);
-   }
-   //add stuff for enpassant
-   if (posMove.isValid() && board[posMove] == SPACE && board[Position(col, row - 1)] == PAWN && board[Position(col, row + 1)].isWhite() != fWhite)
-   {
-      Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
-      string text = move.getText();
-      text += 'E';
-      Move newMove(text);
-      moves.insert(newMove);
+      if ((!fWhite && row == 3) || (fWhite && row == 4))
+      {
+         Move move(position, posMove, SPACE, board[posMove].getType(), board[posMove].isWhite());
+         string text = move.getText();
+         text += 'E';
+         Move newMove(text);
+         moves.insert(newMove);
+      }
    }
 }
