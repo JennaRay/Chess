@@ -66,7 +66,7 @@ public:
          return false;
    }
    void setValid() {              }
-   void setInvalid() {              }
+   void setInvalid() { colRow = -1; }
    //Operation overloading
    bool operator <  (const Position& rhs) const
    {

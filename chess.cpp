@@ -18,6 +18,7 @@
 #include <cassert>        // for ASSERT
 #include <fstream>        // for IFSTREAM
 #include <string>         // for STRING
+#include <iostream>       // for COUT
 using namespace std;
 
 
@@ -30,17 +31,33 @@ using namespace std;
  **************************************/
 void callBack(Interface *pUI, void * p)
 {
-	// placeholders
-	Position position;
-	Position position1;
 
    // the first step is to cast the void pointer into a game object. This
    // is the first step of every single callback function in OpenGL. 
    Board * pBoard = (Board *)p;
 
-   position = pUI->getHoverPosition();
-   position1 = pUI->getSelectPosition();
+   Position position = pUI->getHoverPosition();
+   Position position1 = pUI->getSelectPosition();
+   Position previous = pUI->getPreviousPosition();
    set <Move> moves = pBoard->getPossibleMoves(position1);
+   set <Move> prevMoves = pBoard->getPossibleMoves(previous);
+
+   if (position1 == previous)
+   {
+      pUI->clearSelectPosition();
+      position1.setInvalid();
+
+   }
+   for (auto it = prevMoves.begin(); it != prevMoves.end(); it++)
+   {
+      if (it->getDest() == position1)
+      {
+         pBoard->move(*it);
+         pUI->clearSelectPosition();
+         pUI->clearPreviousPosition();
+         break;
+      }
+   }
 
 
    pBoard->display(position, position1, moves);

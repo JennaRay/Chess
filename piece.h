@@ -74,7 +74,10 @@ public:
    virtual void decrementNMoves() { nMoves -= 1; }
    virtual const Position & getPosition()  const { return position;   }
    virtual bool justMoved(int currentMove) const { if (lastMove == currentMove - 1) return true; else return false; }
-
+   virtual void move(int c, int r) {
+      position.set(c, r);
+      nMoves++;
+   }
    // setter
    virtual void setLastMove(int currentMove) { lastMove = currentMove; nMoves++; }
 

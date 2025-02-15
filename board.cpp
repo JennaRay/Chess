@@ -81,9 +81,10 @@ set <Move> Board::getPossibleMoves(const Position& pos) const
    if (pos.isValid())
    {
       Piece* pPiece = board[pos.getCol()][pos.getRow()];
-      assert(pPiece != nullptr);
+      //assert(pPiece != nullptr);
       set <Move> moves;
-      pPiece->getMoves(moves, *this);
+      if (pPiece != nullptr)
+         pPiece->getMoves(moves, *this);
       return moves;
    }
    else
@@ -210,16 +211,19 @@ void Board::move(const Move & move)
    Position posDest(move.getDest());
    int sCol = posSource.getCol();
    int sRow = posSource.getRow();
+   int dCol = posDest.getCol();
+   int dRow = posDest.getRow();
    // Get the piece
    Piece* pPiece = board[sCol][sRow];
    assert(pPiece != nullptr);
 
    // Move the piece
-   board[posDest.getCol()][posDest.getRow()] = pPiece;
+   board[dCol][dRow] = pPiece;
+   pPiece->move(dCol, dRow);
    board[sCol][sRow] = new Space(sCol, sRow);
    if (move.getType() == Move::ENPASSANT)
    {
-      board[sCol][posDest.getRow()] = new Space(posDest.getCol(), sRow);
+      board[sCol][dRow] = new Space(dCol, sRow);
    }
    if (move.getType() == Move::CASTLE_KING)
    {
