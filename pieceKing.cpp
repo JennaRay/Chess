@@ -44,43 +44,53 @@ set <Move> King::getMovesCastle(set <Move>& moves, const Board& board) const
    if (fWhite)
    {
       Position posMove(0, 0);
-      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite)
+      Position between1(1, 0);
+      Position between2(2, 0);
+      Position between3(3, 0);
+      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite && board[between1].getType() == SPACE && board[between2].getType() == SPACE && board[between3].getType() == SPACE)
       {
          if (nMoves == 0 && board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(0, 2), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
+            Move move(position, Position(2, 0), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
             moves.insert(move);
          }
       }
 
-      posMove.set(0, 7);
-      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite)
+      posMove.set(7, 0);
+      between1.set(6, 0);
+      between2.set(5, 0);
+      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite && board[between1].getType() == SPACE && board[between2].getType() == SPACE)
       {
          if (board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(0, 6), SPACE, SPACE, fWhite, Move::CASTLE_KING);
+            Move move(position, Position(6, 0), SPACE, SPACE, fWhite, Move::CASTLE_KING);
             moves.insert(move);
          }
       }
    }
    else
    {
-      Position posMove(7, 0);
-      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite)
+      Position posMove(0, 7);
+      Position between1(1, 7);
+      Position between2(2, 7);
+      Position between3(3, 7);
+      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite && board[between1].getType() == SPACE && board[between2].getType() == SPACE && board[between3].getType() == SPACE)
       {
          if (nMoves == 0 && board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(7, 2), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
+            Move move(position, Position(2, 7), SPACE, SPACE, fWhite, Move::CASTLE_QUEEN);
             moves.insert(move);
          }
       }
 
       posMove.set(7, 7);
-      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite)
+      between1.set(6, 7);
+      between2.set(5, 7);
+      if (board[posMove].getType() == ROOK && board[posMove].isWhite() == fWhite && board[between1].getType() == SPACE && board[between2].getType() == SPACE)
       {
          if (board[posMove].getNMoves() == 0)
          {
-            Move move(position, Position(7, 6), SPACE, SPACE, fWhite, Move::CASTLE_KING);
+            Move move(position, Position(6, 7), SPACE, SPACE, fWhite, Move::CASTLE_KING);
             moves.insert(move);
          }
       }
