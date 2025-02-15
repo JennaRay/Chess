@@ -40,10 +40,10 @@ void callBack(Interface *pUI, void * p)
 
    position = pUI->getHoverPosition();
    position1 = pUI->getSelectPosition();
-   
-   
+   set <Move> moves = pBoard->getPossibleMoves(position1);
 
-   pBoard->display(position, position1);
+
+   pBoard->display(position, position1, moves);
 }
 
 

@@ -71,11 +71,31 @@ Piece& Board::operator [] (const Position& pos)
    return *board[pos.getCol()][pos.getRow()];
 }
 
+/***********************************************
+* BOARD : GETPOSSIBLEMOVES
+*         Get all the possible moves for a given piece
+*
+***********************************************/
+set <Move> Board::getPossibleMoves(const Position& pos) const
+{
+   if (pos.isValid())
+   {
+      Piece* pPiece = board[pos.getCol()][pos.getRow()];
+      assert(pPiece != nullptr);
+      set <Move> moves;
+      pPiece->getMoves(moves, *this);
+      return moves;
+   }
+   else
+   {
+      return set<Move>();
+   }
+}
  /***********************************************
  * BOARD : DISPLAY
  *         Display the board
  ***********************************************/
-void Board::display(const Position & posHover, const Position & posSelect) const
+void Board::display(const Position & posHover, const Position & posSelect, set <Move>& moves) const
 {
     // Draw board
     pgout->drawBoard();
@@ -89,19 +109,11 @@ void Board::display(const Position & posHover, const Position & posSelect) const
        pgout->drawSelected(posSelect);
     }
     // Draw possible moves
-    if (posSelect.isValid()) {
-       Piece* pPiece = board[posSelect.getCol()][posSelect.getRow()];
-       if (pPiece != nullptr) {
-          set <Move> moves;
-          pPiece->getMoves(moves, *this);
-          //cout << pPiece->getPosition() << endl;
-          cout << moves.size() << endl;
-          for (set<Move>::iterator it = moves.begin(); it != moves.end(); it++) {
-             Position posDest(it->getDest());
-             // Draw all possible moves
-             pgout->drawPossible(posDest);
-          }
-       }
+    
+   for (set<Move>::iterator it = moves.begin(); it != moves.end(); it++) {
+      Position posDest(it->getDest());
+      // Draw all possible moves
+      pgout->drawPossible(posDest);
     }
 
     // Draw all pieces
